@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Loaded="Page_Loaded">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -23,21 +23,45 @@
                        VerticalAlignment="Center"/>
         </Grid>
 
-        <ListView Grid.Row="1"
-                  x:Name="CitiesListView"
+        <GridView Grid.Row="1"
+                  x:Name="CitiesGridView"
+                  Margin="4,5,4,5"
                   IsItemClickEnabled="True"
-                  ItemClick="CitiesListView_ItemClick">
-            <ListView.ItemTemplate>
+                  HorizontalAlignment="Center"
+                  ItemClick="CitiesGridView_ItemClick">
+            <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}"
-                                   Foreground="Black"/>
-                        <TextBlock Text="{Binding Description}"
-                                   Foreground="#b5b3b3"/>
-                    </StackPanel>
+                    <Grid Height="320"
+                          Width="240">
+                        <Image Source="{Binding ImageUrl}"
+                               Stretch="UniformToFill"/>
+                        <StackPanel Height="50"
+                                    VerticalAlignment="Bottom"
+                                    Background="{ThemeResource SystemBaseLowColor}"
+                                    Padding="15">
+                            <TextBlock Text="{Binding Name}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
-</Page>
+            </GridView.ItemTemplate>
+        </GridView>
 
+        <TextBlock Grid.Row="1"
+                   x:Name="NoDataTextBlock"
+                   Foreground="#2C404B"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Visibility="Collapsed"/>
+
+        <ProgressRing Grid.Row="1"
+                      x:Name="LoadingProgressRing"
+                      IsActive="True"
+                      Width="68"
+                      Height="68"
+                      Foreground="#427093"/>
+    </Grid>
+
+</Page>

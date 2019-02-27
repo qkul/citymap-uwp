@@ -1,4 +1,5 @@
 ﻿using CityMapUWP.Models;
+using CityMapUWP.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,14 +29,17 @@ namespace CityMapUWP.Views
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var city = e.Parameter as City;
 
             if (city != null)
             {
+                CityImage.Source = new BitmapImage(new Uri(city.ImageUrl));
                 NameTextBlock.Text = city.Name;
                 DescriptionTextBlock.Text = city.Description;
+                
             }
 
             base.OnNavigatedTo(e);

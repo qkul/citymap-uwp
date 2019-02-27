@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,15 +24,42 @@ namespace CityMapUWP.Views
     /// </summary>
     public sealed partial class CitiesView : Page
     {
+        private const string NoInternetConection = "No internet conection";
+        private const string NoData = "No Data";
+
+        private CitiesService _citiesService;
+        private NetworkService _networkService;
         public CitiesView()
         {
             this.InitializeComponent();
-
-            var citiesService = new CitiesService();
-            CitiesListView.ItemsSource = citiesService.Cities;
+            _citiesService = new CitiesService();
+            _networkService = new NetworkService();
         }
 
-        private void CitiesListView_ItemClick(object sender, ItemClickEventArgs itemClickEvent)
+        public async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await InitializeAsync();
+            
+        }
+
+        private async Task InitializeAsync()
+        {
+            LoadingProgressRing.IsActive = true;
+            var cities = await _citiesService.LoadCitiesAsync();
+            LoadingProgressRing.IsActive = false;
+
+            if (cities != null) CitiesGridView.ItemsSource = cities;
+            else ShowNoData();
+
+        }
+
+        private void ShowNoData()
+        {
+            NoDataTextBlock.Text = _networkService.HasInternet() ? NoData : NoInternetConection;
+            NoDataTextBlock.Visibility = Visibility.Visible;
+        }
+
+        private void CitiesGridView_ItemClick(object sender, ItemClickEventArgs itemClickEvent)
         {
             Frame.Navigate(typeof(CityDetailsView), itemClickEvent.ClickedItem);
         }
