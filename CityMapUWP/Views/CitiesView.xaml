@@ -8,9 +8,9 @@
     mc:Ignorable="d"
     Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid Background="Azure">
         <Grid.RowDefinitions>
-            <RowDefinition Height="64"/>
+            <RowDefinition Height="67"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -21,6 +21,22 @@
                        FontSize="32"
                        Margin="18,0,0,0"
                        VerticalAlignment="Center"/>
+            <Button x:Name="CitiesMapButton"
+                    Height="30"
+                    Margin="0,0,18,0"
+                    HorizontalAlignment="Right"
+                    Tapped="CitiesMapButton_Tapped" Width="153">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,4,0">
+                        <Image Source="ms-appx:///Assets/MapLogo.png"/>
+                        <TextBlock   Text="Cities MAP"
+                                     Foreground="Azure"
+                                     Margin="12,0,0,0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
         </Grid>
 
         <GridView Grid.Row="1"
