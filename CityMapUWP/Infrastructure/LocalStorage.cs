@@ -11,6 +11,7 @@ namespace CityMapUWP.Infrastructure
         private const string AppDataFileName = "appData.txt";
         private readonly StorageFolder _localStorage;
 
+
         public LocalStorage()
         {
             _localStorage = ApplicationData.Current.LocalFolder;
