@@ -27,7 +27,5 @@ namespace CityMapUWP.Services
 
             return appData.Cities;
         }
-
-      
     }
 }

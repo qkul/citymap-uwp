@@ -9,8 +9,8 @@ namespace CityMapUWP.Infrastructure
     class LocalStorage
     {
         private const string AppDataFileName = "appData.txt";
+        private readonly StorageFolder _localStorage;
 
-        private StorageFolder _localStorage;
 
         public LocalStorage()
         {

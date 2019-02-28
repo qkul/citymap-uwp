@@ -10,6 +10,5 @@ namespace CityMapUWP.Models
         [JsonProperty]
         [DataMember(Name = "photos")]
         public IEnumerable<City> Cities { get; set; }
-
     }
 }

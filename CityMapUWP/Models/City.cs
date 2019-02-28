@@ -21,5 +21,13 @@ namespace CityMapUWP.Models
         [JsonProperty]
         [DataMember(Name = "url")]
         public string ImageUrl { get; set; }
+
+        [JsonProperty]
+        [DataMember(Name = "latitude")]
+        public double Latitude { get; set; }
+
+        [JsonProperty]
+        [DataMember(Name = "longitude")]
+        public double Longitude { get; set; }
     }
 }
