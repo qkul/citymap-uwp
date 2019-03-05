@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="CityMapUWP.Views.CityDetailsView"
+    x:Class="CityMapUWP.Views.SettingView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CityMapUWP.Views"
@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
@@ -18,32 +17,12 @@
               HorizontalAlignment="Stretch">
             <Button x:Name="BackButton" Click="Back_Click" 
              Style="{StaticResource NavigationBackButtonNormalStyle}" Height="53" Width="60"/>
-            <TextBlock x:Name="NameTextBlock"
+            <TextBlock Text="Sitting"
                        Foreground="White"
-                       FontSize="40"
+                       FontSize="32"
                        Margin="65,0,0,0"
                        VerticalAlignment="Center"/>
         </Grid>
 
-        <ScrollViewer Grid.Row="1"
-                      VerticalScrollBarVisibility="Auto">
-            <Grid HorizontalAlignment="Center"
-                  MaxWidth="640">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Image x:Name="CityImage"
-                       Stretch="Uniform"
-                       Margin="0,0,0,0"/>
-
-                <TextBlock Grid.Row="1"
-                           x:Name="DescriptionTextBlock"
-                           Foreground="#2C404B"
-                           Margin="15"
-                           TextWrapping="WrapWholeWords"/>
-            </Grid>
-        </ScrollViewer>
     </Grid>
 </Page>
