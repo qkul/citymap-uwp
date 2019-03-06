@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RelativePanel >
+        <RelativePanel  >
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True"
                     FontFamily="Segoe MDL2 Assets" FontSize="36"
                     Background="{Binding ElementName=menu, Path=Background}"
@@ -31,13 +31,13 @@
                     <ListBoxItem Name="home">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="36" FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" />
-                            <TextBlock FontSize="24" Text="Home" Margin="10 0 0 0" />
+                            <TextBlock FontSize="24" x:Uid="TextHome"  Margin="10 0 0 0" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="settings">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="36" FontFamily="Segoe MDL2 Assets" Text="&#xE713;" />
-                            <TextBlock FontSize="24" Text="Setting" Margin="10 0 0 0" />
+                            <TextBlock FontSize="24" x:Uid="TextSetting" Margin="10 0 0 0" />
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>

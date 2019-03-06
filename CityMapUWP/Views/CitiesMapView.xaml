@@ -18,7 +18,7 @@
         <Grid Background="#427093"
               HorizontalAlignment="Stretch">
             <Button x:Name="BackButton" Click="Back_Click" Style="{StaticResource NavigationBackButtonNormalStyle}" Height="53" Width="60"/>
-            <TextBlock Text="Cities Map"
+            <TextBlock x:Uid="TextCitiesMap" Text="Cities Map"
                        Foreground="White"
                        FontSize="32"
                        Margin="65,0,0,0"
@@ -28,7 +28,7 @@
         <maps:MapControl  x:Name="CitiesMapControl"
                           Grid.Row="1"
                           ZoomLevel="1"
-                          MapServiceToken="lIWUi7rIZzSlVQtHcLSs~I85L7hj83ZFNptmFZqj9tA~AmcImCIe-RXQF0DELo0DbJm4n7xcxFE9-WP6SAtSun9LglUS-elKdnmS5_HYvHzR"
+                          MapServiceToken="Key"
                          />
     </Grid>
 </Page>

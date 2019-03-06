@@ -25,24 +25,7 @@ namespace CityMapUWP.Views
     {
         public SettingView()
         {
-            KeyboardAccelerator GoBack = new KeyboardAccelerator();
-            GoBack.Key = VirtualKey.GoBack;
-            GoBack.Invoked += BackInvoked;
-            KeyboardAccelerator AltLeft = new KeyboardAccelerator();
-            AltLeft.Key = VirtualKey.Left;
-            AltLeft.Invoked += BackInvoked;
-            this.KeyboardAccelerators.Add(GoBack);
-            this.KeyboardAccelerators.Add(AltLeft);
-            // ALT routes here
-            AltLeft.Modifiers = VirtualKeyModifiers.Menu;
             this.InitializeComponent();
-        }
-
-
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            BackButton.IsEnabled = this.Frame.CanGoBack;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -61,10 +44,25 @@ namespace CityMapUWP.Views
             return false;
         }
 
-        private void BackInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            On_BackRequested();
-            args.Handled = true;
+            base.OnNavigatedTo(e);
+
+            CbxLanguages.ItemsSource = LocalizedResources.SupportedLanguages;
+            CbxLanguages.SelectedIndex = Array.IndexOf(LocalizedResources.SupportedLanguages.ToArray(), LocalizedResources.Language);
+        }
+
+        private void CbxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CbxLanguages.SelectedItem != null)
+            {
+                var language = CbxLanguages.SelectedItem as string;
+
+                LocalizedResources.Language = language;
+
+                Frame.Navigate(Frame.CurrentSourcePageType);
+                Frame.BackStack.Clear();
+            }
         }
     }
 }
