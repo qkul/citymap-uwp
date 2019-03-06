@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace CityMapUWP.Models
 {
     [DataContract()]
-    class AppData
+    public class AppData
     {
         [JsonProperty]
         [DataMember(Name = "photos")]

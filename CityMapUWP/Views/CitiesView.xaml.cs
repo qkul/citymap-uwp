@@ -1,5 +1,6 @@
 ﻿using CityMapUWP.Services;
 using System.Threading.Tasks;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -52,3 +53,4 @@ namespace CityMapUWP.Views
         private void CitiesMapButton_Tapped(object sender, TappedRoutedEventArgs e) => Frame.Navigate(typeof(CitiesMapView), CitiesGridView.ItemsSource);
     }
 }
+ 

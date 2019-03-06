@@ -1,8 +1,11 @@
 ﻿using CityMapUWP.Models;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
+using Windows.System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 
@@ -17,6 +20,7 @@ namespace CityMapUWP.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+       
             var cities = e.Parameter as IEnumerable<City>;
 
             if (cities != null)
@@ -47,6 +51,21 @@ namespace CityMapUWP.Views
 
             CitiesMapControl.MapElements.Add(mapIcon);
             CitiesMapControl.Center = new Geopoint(location);
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
+
+        private bool On_BackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
         }
     }
 }
