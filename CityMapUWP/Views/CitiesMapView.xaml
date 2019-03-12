@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps ="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:userControl ="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -15,20 +16,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#427093"
-              HorizontalAlignment="Stretch">
-            <Button x:Name="BackButton" Click="Back_Click" Style="{StaticResource NavigationBackButtonNormalStyle}" Height="53" Width="60"/>
-            <TextBlock x:Uid="TextCitiesMap" Text="Cities Map"
-                       Foreground="White"
-                       FontSize="32"
-                       Margin="65,0,0,0"
-                       VerticalAlignment="Center"/>
-        </Grid>
-
+        <userControl:NavigationControl NavigationTitle="Cities Map"/>
         <maps:MapControl  x:Name="CitiesMapControl"
                           Grid.Row="1"
                           ZoomLevel="1"
-                          MapServiceToken="Key"
+                          MapServiceToken="lIWUi7rIZzSlVQtHcLSs~I85L7hj83ZFNptmFZqj9tA~AmcImCIe-RXQF0DELo0DbJm4n7xcxFE9-WP6SAtSun9LglUS-elKdnmS5_HYvHzR"
                          />
     </Grid>
 </Page>

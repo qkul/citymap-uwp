@@ -131,6 +131,9 @@
     <Compile Include="Services\Api\AppApiService.cs" />
     <Compile Include="Services\CitiesService.cs" />
     <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="UserControls\NavigationControl.xaml.cs">
+      <DependentUpon>NavigationControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CitiesMapView.xaml.cs">
       <DependentUpon>CitiesMapView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NavigationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

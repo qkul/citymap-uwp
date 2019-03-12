@@ -5,42 +5,31 @@
     xmlns:local="using:CityMapUWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:userControl="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
-
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid Background="#427093"
-              HorizontalAlignment="Stretch">
-            <TextBlock 
-                       x:Uid="TextCities"
-                       Text="Cities"
-                       Foreground="White"
-                       FontSize="32"
-                       Margin="18,0,0,0"
-                       VerticalAlignment="Center"/>
-            <Button  x:Name="CitiesMapButton"
-                    Height="30"
-                    Margin="0,0,18,0"
-                    HorizontalAlignment="Right"
-                    Tapped="CitiesMapButton_Tapped" Width="153">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal"
+        <userControl:NavigationControl  NavigationTitle="Cities"/>
+        
+        <Button  x:Name="CitiesMapButton"
+                    Style="{StaticResource ButtonMapStyle}"
+                    Tapped="CitiesMapButton_Tapped" Width="150">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal"
                                 Margin="0,0,4,0">
-                        <Image Source="ms-appx:///Assets/MapLogo.png"/>
-                        <TextBlock  x:Uid="btnCitiesMap" Text="Cities MAP"
+                    <Image Source="ms-appx:///Assets/MapLogo.png"/>
+            
+                    <TextBlock  x:Uid="btnCitiesMap" Text="Cities MAP"
                                      Foreground="Azure"
                                      Margin="12,0,0,0"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-
-        </Grid>
-
+                </StackPanel>
+            </Button.Content>
+        </Button>
+      
         <GridView Grid.Row="1"
                   x:Name="CitiesGridView"
                   Margin="4,5,4,5"
