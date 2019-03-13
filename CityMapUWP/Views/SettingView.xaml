@@ -16,9 +16,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
             <RowDefinition Height="62*"/>
-            <RowDefinition Height="871*"/>
         </Grid.RowDefinitions>
-
+ 
         <userControl:NavigationControl  NavigationTitle="Setting"/>
         <TextBlock x:Name="TblMessage"
                    x:Uid="Message"
@@ -28,9 +27,9 @@
                    Text="Welcome to the settings, here you can change the interface language. My contacts: q_kul@mail.ru"
                    />
         <ComboBox x:Name="CbxLanguages"
-                  Grid.Row="2"
-                  Margin="10,70,0,0"
-                  MaxWidth="400"
+                  Grid.Row="1"
+                  Margin="10,90,0,0"
+                  MaxWidth="300"
                   SelectionChanged="CbxLanguages_SelectionChanged" Height="33" Width="250">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,17 +28,36 @@ namespace CityMapUWP
             this.InitializeComponent();
             // по умолчанию открываем страницу home.xaml
             myFrame.Navigate(typeof(CitiesView));
+
+            myFrame.Navigated += myFrame_Navigated;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+            
+        }
+        private void myFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                ((Frame)sender).CanGoBack ?
+                AppViewBackButtonVisibility.Visible :
+                AppViewBackButtonVisibility.Collapsed;
         }
 
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (myFrame.CanGoBack)
+            {
+                e.Handled = true;
+                myFrame.GoBack();
+            }
+        }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (home.IsSelected)
-            {
-                myFrame.Navigate(typeof(CitiesView));
-            }
-            else if (settings.IsSelected)
+            if (settings.IsSelected)
             {
                 myFrame.Navigate(typeof(SettingView));
+            }
+            else if (home.IsSelected)
+            {
+                myFrame.Navigate(typeof(CitiesView));
             }
         }
 
@@ -45,5 +65,6 @@ namespace CityMapUWP
         {
             mySplitView.IsPaneOpen = !mySplitView.IsPaneOpen;
         }
+
     }
 }
