@@ -5,81 +5,64 @@
     xmlns:local="using:CityMapUWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:userControl="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
-
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <userControl:NavigationControl  NavigationTitle="Cities"/>
 
-        <Grid Background="#427093"
-              HorizontalAlignment="Stretch">
-            <TextBlock 
-                       x:Uid="TextCities"
-                       Text="Cities"
-                       Foreground="White"
-                       FontSize="32"
-                       Margin="18,0,0,0"
-                       VerticalAlignment="Center"/>
-            <Button  x:Name="CitiesMapButton"
-                    Height="30"
-                    Margin="0,0,18,0"
-                    HorizontalAlignment="Right"
-                    Tapped="CitiesMapButton_Tapped" Width="153">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal"
+        <Button  x:Name="CitiesMapButton"
+                    Style="{StaticResource ButtonMapStyle}"
+                    Tapped="CitiesMapButton_Tapped" Width="150">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal"
                                 Margin="0,0,4,0">
-                        <Image Source="ms-appx:///Assets/MapLogo.png"/>
-                        <TextBlock  x:Uid="btnCitiesMap" Text="Cities MAP"
+                    <Image Source="ms-appx:///Assets/MapLogo.png"/>
+
+                    <TextBlock  x:Uid="btnCitiesMap" Text="Cities MAP"
                                      Foreground="Azure"
                                      Margin="12,0,0,0"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-
-        </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
 
         <GridView Grid.Row="1"
                   x:Name="CitiesGridView"
-                  Margin="4,5,4,5"
-                  IsItemClickEnabled="True"
-                  HorizontalAlignment="Center"
-                  ItemClick="CitiesGridView_ItemClick">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="320"
-                          Width="240">
-                        <Image Source="{Binding ImageUrl}"
-                               Stretch="UniformToFill"/>
-                        <StackPanel Height="50"
-                                    VerticalAlignment="Bottom"
-                                    Background="{ThemeResource SystemBaseLowColor}"
-                                    Padding="15">
-                            <TextBlock Text="{Binding Name}"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Foreground="White"/>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-
+                  Style="{StaticResource gViewCities}"
+                  ItemTemplate="{StaticResource KeyWideTemplate}"
+                  ItemClick="CitiesGridView_ItemClick"/>
         <TextBlock Grid.Row="1"
                    x:Name="NoDataTextBlock"
-                   Foreground="#2C404B"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Visibility="Collapsed"/>
+                   Style="{StaticResource NoDataTextBlockStyle}"/>
 
         <ProgressRing Grid.Row="1"
                       x:Name="LoadingProgressRing"
-                      IsActive="True"
-                      Width="68"
-                      Height="68"
-                      Foreground="#427093"/>
-    </Grid>
+                     Style="{StaticResource LoadingProgressRingStyle}"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger x:Name="VisualStateNarrowTrigger" MinWindowWidth="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CitiesGridView.(ItemsControl.ItemTemplate)" Value="{StaticResource KeyNarrowTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
 
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger x:Name="VisualStateNormalTrigger" MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CitiesGridView.(ItemsControl.ItemTemplate)" Value="{StaticResource KeyWideTemplate}" />
+                    </VisualState.Setters>
+
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
 </Page>

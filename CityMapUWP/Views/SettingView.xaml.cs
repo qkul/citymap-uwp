@@ -28,22 +28,6 @@ namespace CityMapUWP.Views
             this.InitializeComponent();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            On_BackRequested();
-        }
-
-        // Handles system-level BackRequested events and page-level back button Click events
-        private bool On_BackRequested()
-        {
-            if (this.Frame.CanGoBack)
-            {
-                this.Frame.GoBack();
-                return true;
-            }
-            return false;
-        }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -64,6 +48,7 @@ namespace CityMapUWP.Views
                 Frame.BackStack.Clear();
             }
         }
+
     }
 }
 
