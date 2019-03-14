@@ -22,7 +22,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
         </RelativePanel>
-       
+
         <SplitView Name="mySplitView" Grid.Row="1" OpenPaneLength="200"
                    DisplayMode="CompactOverlay" CompactPaneLength="56">
 
