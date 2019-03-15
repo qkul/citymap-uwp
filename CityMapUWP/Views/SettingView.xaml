@@ -10,6 +10,24 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <local:LocalizedResourcesConverter x:Key="LocalizedResourcesConverter" />
+        
+        <Style TargetType="ComboBox" x:Key="ComboBoxLanguagesStyle">
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10,-50,10,0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="SettingMessageStyle">
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="Text" Value="Welcome to the settings, here you can change the interface language. My contacts: q_kul@mail.ru"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        
     </Page.Resources>
 
     <Grid Background="Azure">
@@ -17,25 +35,19 @@
             <RowDefinition Height="67"/>
             <RowDefinition Height="62*"/>
         </Grid.RowDefinitions>
- 
+
         <userControl:NavigationControl  NavigationTitle="Setting"/>
-        <TextBlock x:Name="TblMessage"
-                   x:Uid="Message"
-                   Grid.Row="1"
-                   Style="{StaticResource SubtitleTextBlockStyle}"
-                   Margin="10,10,10,10" Grid.RowSpan="2"
-                   Text="Welcome to the settings, here you can change the interface language. My contacts: q_kul@mail.ru"
-                   />
         <ComboBox x:Name="CbxLanguages"
-                  Grid.Row="1"
-                  Margin="10,90,0,0"
-                  MaxWidth="300"
-                  SelectionChanged="CbxLanguages_SelectionChanged" Height="33" Width="250">
+                  Style="{StaticResource ComboBoxLanguagesStyle}"            
+                  SelectionChanged="CbxLanguages_SelectionChanged"   >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Converter={StaticResource LocalizedResourcesConverter}}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <TextBlock x:Name="TblMessage"
+                   x:Uid="Message"
+                   Style="{StaticResource SettingMessageStyle}"/>
     </Grid>
 </Page>

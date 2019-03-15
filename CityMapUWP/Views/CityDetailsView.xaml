@@ -8,7 +8,28 @@
     xmlns:userControl="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="CityDetailsStyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Margin" Value="18,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
 
+        <Style TargetType="TextBlock" x:Key="DescriptionTextStyle">
+            <Setter Property="Foreground" Value="#2C404B"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="CityImageStyle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+        
+    </Page.Resources>
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
@@ -16,10 +37,7 @@
         </Grid.RowDefinitions>
         <userControl:NavigationControl x:Name="NavigationControl"/>
         <TextBlock x:Name="NameTextBlock"
-                       Foreground="White"
-                       FontSize="32"
-                       Margin="18,0,0,0"
-                       VerticalAlignment="Center"/>
+                   Style="{StaticResource CityDetailsStyle}"/>
 
         <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto">
@@ -31,14 +49,10 @@
                 </Grid.RowDefinitions>
 
                 <Image x:Name="CityImage"
-                       Stretch="Uniform"
-                       Margin="0,0,0,0"/>
+                       Style="{StaticResource CityImageStyle}"/>
 
-                <TextBlock Grid.Row="1"
-                           x:Name="DescriptionTextBlock"
-                           Foreground="#2C404B"
-                           Margin="15"
-                           TextWrapping="WrapWholeWords"/>
+                <TextBlock x:Name="DescriptionTextBlock"
+                           Style="{StaticResource DescriptionTextStyle}"/>
             </Grid>
         </ScrollViewer>
     </Grid>
