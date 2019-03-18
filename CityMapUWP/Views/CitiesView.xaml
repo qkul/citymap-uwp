@@ -8,6 +8,80 @@
     xmlns:userControl="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
+    <Page.Resources>
+
+        <DataTemplate x:Key="KeyWideTemplate">
+            <Grid Height="320"
+                          Width="240">
+                <Image Source="{Binding ImageUrl}"
+                               Stretch="UniformToFill"/>
+                <StackPanel Height="50"
+                                    VerticalAlignment="Bottom"
+                                    Background="{ThemeResource SystemBaseLowColor}"
+                                    Padding="15">
+                    <TextBlock Text="{Binding Name}"
+                                       HorizontalAlignment="Center"
+                                       FontFamily="Verdana"
+                                       VerticalAlignment="Center"
+                                   
+                                       Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="KeyNarrowTemplate">
+
+            <Grid Height="130" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                        Grid.Column="0"
+                        Width="200"
+                        Height="200"
+                        Source="{Binding ImageUrl}" />
+
+                <TextBlock
+                        Grid.Column="1"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15" 
+                        FontFamily="Verdana"
+                        Text="{Binding Name}"
+                        TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="Button" x:Key="ButtonMapStyle">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,0,18,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="GridView" x:Key="gViewCities">
+            <Setter Property="Margin" Value="4,5,4,5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="IsItemClickEnabled" Value="True"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="NoDataTextBlockStyle">
+            <Setter Property="Foreground" Value="#2C404B"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+
+        <Style TargetType="ProgressRing" x:Key="LoadingProgressRingStyle">
+            <Setter Property="IsActive" Value="True"/>
+            <Setter Property="Width" Value="68"/>
+            <Setter Property="Height" Value="68"/>
+            <Setter Property="Foreground" Value="#427093"/>
+        </Style>
+    </Page.Resources>
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="67"/>
