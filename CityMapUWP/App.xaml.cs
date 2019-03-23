@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using CityMapUWP.ViewModels;
+using CityMapUWP.Views;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Activation;
@@ -24,6 +25,9 @@ namespace CityMapUWP
             _container = new WinRTContainer();
             _container.RegisterWinRTServices();
             _container.PerRequest<CitiesViewModel>();
+            //_container.PerRequest<CityDetailsViewModel>();
+            //_container.PerRequest<CitiesMapViewModel>();
+            //_container.PerRequest<SettingViewModel>();
         }
         protected override void PrepareViewFirst(Frame rootFrame)
         {
@@ -34,7 +38,7 @@ namespace CityMapUWP
         {
             if (e.PreviousExecutionState == ApplicationExecutionState.Running)
                 return;
-            DisplayRootView<MainPage>();
+            DisplayRootView<CitiesView>();
         }
 
         protected override object GetInstance(Type service, string key)

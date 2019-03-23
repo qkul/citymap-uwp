@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CityMapUWP.ViewModels
 {
-    class CitiesMapViewModel : Screen
+    public class CitiesMapViewModel : Screen
     {
     }
 }

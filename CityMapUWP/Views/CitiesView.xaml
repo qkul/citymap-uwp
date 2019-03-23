@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControl="using:CityMapUWP.UserControls"
     mc:Ignorable="d"
-    Loaded="Page_Loaded">
+  
+    >
     <Page.Resources>
 
         <DataTemplate x:Key="KeyWideTemplate">
@@ -19,12 +20,15 @@
                                     VerticalAlignment="Bottom"
                                     Background="{ThemeResource SystemBaseLowColor}"
                                     Padding="15">
-                    <TextBlock Text="{Binding Name}"
+                    <!--<TextBlock Text="{Binding Name}"-->
+                    <!--<TextBlock Text="{x:Bind ViewModel.CityModel.Name, Mode=OneTime}"-->
+                    <TextBlock Text="{Binding Name}"   
                                        HorizontalAlignment="Center"
                                        FontFamily="Verdana"
                                        VerticalAlignment="Center"
                                    
                                        Foreground="White"/>
+
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -89,9 +93,11 @@
         </Grid.RowDefinitions>
         <userControl:NavigationControl  NavigationTitle="Cities"/>
 
-        <Button  x:Name="CitiesMapButton"
+        <Button x:Name="CitiesMapButton"
+                    Visibility="{x:Bind ViewModel.VisibilityCitiesMapButton, Mode=OneWay}"   
                     Style="{StaticResource ButtonMapStyle}"
-                    Tapped="CitiesMapButton_Tapped" Width="150">
+                    Width="150"
+                    Click="OnClickCitiesMap">
             <Button.Content>
                 <StackPanel Orientation="Horizontal"
                                 Margin="0,0,4,0">
@@ -106,16 +112,21 @@
 
         <GridView Grid.Row="1"
                   x:Name="CitiesGridView"
-                  Style="{StaticResource gViewCities}"
+                  Style="{StaticResource gViewCities}"                      
                   ItemTemplate="{StaticResource KeyWideTemplate}"
-                  ItemClick="CitiesGridView_ItemClick"/>
+                  ItemsSource="{x:Bind ViewModel.Cities, Mode=OneWay}"
+                  ItemClick="OnClickCitiesListClick"/>
         <TextBlock Grid.Row="1"
                    x:Name="NoDataTextBlock"
                    Style="{StaticResource NoDataTextBlockStyle}"/>
+      
 
         <ProgressRing Grid.Row="1"
                       x:Name="LoadingProgressRing"
-                     Style="{StaticResource LoadingProgressRingStyle}"/>
+                      Style="{StaticResource LoadingProgressRingStyle}"
+                      IsActive="{x:Bind ViewModel.IsLoadingProgressRing, Mode=OneWay}"
+                     />
+     
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">
