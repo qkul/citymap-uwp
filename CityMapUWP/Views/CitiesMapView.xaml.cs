@@ -1,4 +1,5 @@
 ﻿using CityMapUWP.Models;
+using CityMapUWP.ViewModels;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 using Windows.System;
@@ -13,9 +14,11 @@ namespace CityMapUWP.Views
 {
     public sealed partial class CitiesMapView : Page
     {
+        public CitiesMapViewModel ViewModel { get; set; }
         public CitiesMapView()
         {
             this.InitializeComponent();
+            DataContextChanged += (s, e) => { ViewModel = DataContext as CitiesMapViewModel; };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

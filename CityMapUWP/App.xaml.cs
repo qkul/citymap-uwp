@@ -26,8 +26,8 @@ namespace CityMapUWP
             _container.RegisterWinRTServices();
             _container.PerRequest<CitiesViewModel>();
             _container.PerRequest<CityDetailsViewModel>();
-            //_container.PerRequest<CitiesMapViewModel>();
-            //_container.PerRequest<SettingViewModel>();
+            _container.PerRequest<CitiesMapViewModel>();
+           // _container.PerRequest<SettingViewModel>();
         }
         protected override void PrepareViewFirst(Frame rootFrame)
         {
