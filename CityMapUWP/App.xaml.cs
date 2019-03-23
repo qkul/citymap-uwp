@@ -25,7 +25,7 @@ namespace CityMapUWP
             _container = new WinRTContainer();
             _container.RegisterWinRTServices();
             _container.PerRequest<CitiesViewModel>();
-            //_container.PerRequest<CityDetailsViewModel>();
+            _container.PerRequest<CityDetailsViewModel>();
             //_container.PerRequest<CitiesMapViewModel>();
             //_container.PerRequest<SettingViewModel>();
         }

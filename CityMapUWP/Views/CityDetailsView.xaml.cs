@@ -1,4 +1,5 @@
 ﻿using CityMapUWP.Models;
+using CityMapUWP.ViewModels;
 using System;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -12,24 +13,11 @@ namespace CityMapUWP.Views
 {
     public sealed partial class CityDetailsView : Page
     {
+        public CityDetailsViewModel ViewModel { get; set; }
         public CityDetailsView()
         {
             this.InitializeComponent();
+            DataContextChanged += (s, e) => { ViewModel = DataContext as CityDetailsViewModel; };
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            var city = e.Parameter as City;
-            if (city != null)
-            {
-                CityImage.Source = new BitmapImage(new Uri(city.ImageUrl));
-                NameTextBlock.Text = city.Name;
-                DescriptionTextBlock.Text = city.Description;
-
-            }
-            base.OnNavigatedTo(e);
-        }
-   
-
     }
 }

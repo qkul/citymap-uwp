@@ -25,7 +25,7 @@
 
         <Style TargetType="Image" x:Key="CityImageStyle">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Margin" Value="0,3,0,0"/>
             <Setter Property="Stretch" Value="Uniform"/>
         </Style>
         
@@ -35,7 +35,7 @@
             <RowDefinition Height="67"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <userControl:NavigationControl x:Name="NavigationControl"/>
+        <userControl:NavigationControl x:Name="NavigationControl" NavigationTitle="{x:Bind ViewModel.City.Name, Mode=OneWay}"/>
         <TextBlock x:Name="NameTextBlock"
                    Style="{StaticResource CityDetailsStyle}"/>
 
@@ -49,10 +49,12 @@
                 </Grid.RowDefinitions>
 
                 <Image x:Name="CityImage"
-                       Style="{StaticResource CityImageStyle}"/>
+                       Style="{StaticResource CityImageStyle}"
+                       Source="{x:Bind ViewModel.ImageCity, Mode=OneWay}"/>
 
                 <TextBlock x:Name="DescriptionTextBlock"
-                           Style="{StaticResource DescriptionTextStyle}"/>
+                           Style="{StaticResource DescriptionTextStyle}"
+                           Text="{x:Bind ViewModel.City.Description}"/>
             </Grid>
         </ScrollViewer>
     </Grid>
