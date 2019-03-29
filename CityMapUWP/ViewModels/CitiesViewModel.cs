@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using CityMapUWP.Models;
 using CityMapUWP.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace CityMapUWP.ViewModels
         private readonly INavigationService _navigationService;
         private CitiesService _citiesService;
         private NetworkService _networkService;
-
+    
         public CitiesViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -105,7 +106,7 @@ namespace CityMapUWP.ViewModels
         }
         private void ShowNoData()
         {
-            NoDataTextBl = _networkService.HasInternet() ? NoData : NoInternetConection;
+         //   NoDataTextBl = _networkService.HasInternet() ? NoData : NoInternetConection;
             VisibilityNoData = Visibility.Visible;
         }
         public void NavigateToCityDetails(City city)

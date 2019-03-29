@@ -119,25 +119,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\INavigationManager.cs" />
     <Compile Include="Infrastructure\LocalStorage.cs" />
-    <Compile Include="LocalizedResources.cs" />
-    <Compile Include="LocalizedResourcesConverter.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AppData.cs" />
-    <Compile Include="Models\City.cs" />
+    <Compile Include="Resources\LocalizedResources.cs" />
+    <Compile Include="Resources\LocalizedResourcesConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Api\AppApiService.cs" />
-    <Compile Include="Services\CitiesService.cs" />
-    <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Infrastructure\NetworkService.cs" />
     <Compile Include="UserControls\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CitiesMapViewModel.cs" />
     <Compile Include="ViewModels\CitiesViewModel.cs" />
     <Compile Include="ViewModels\CityDetailsViewModel.cs" />
+    <Compile Include="ViewModels\NavigationManager.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\CitiesMapView.xaml.cs">
       <DependentUpon>CitiesMapView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +145,9 @@
     </Compile>
     <Compile Include="Views\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -175,10 +174,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\NavigationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro">
@@ -211,7 +210,16 @@
       <Version>12.0.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CityMapUWP.Models\CityMapUWP.Models.csproj">
+      <Project>{5c8009ad-8304-4989-84b3-4e0b2ea5fb73}</Project>
+      <Name>CityMapUWP.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityMapUWP.Services\CityMapUWP.Services.csproj">
+      <Project>{6b95a3e0-ade8-44d3-a194-89b3c00cd8ad}</Project>
+      <Name>CityMapUWP.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,12 +1,12 @@
-﻿using CityMapUWP.Infrastructure;
-using CityMapUWP.Models;
+﻿using CityMapUWP.Models;
 using CityMapUWP.Services.Api;
+using Infrastructure;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CityMapUWP.Services
 {
-    class CitiesService
+    public class CitiesService
     {
         private readonly AppApiService _contextApiService;
         private readonly LocalStorage _contextStorage;

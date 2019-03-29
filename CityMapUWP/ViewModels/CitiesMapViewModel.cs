@@ -64,7 +64,7 @@ namespace CityMapUWP.ViewModels
 
         //    if (mapIcon != null)
         //    {
-        //        CitiesMapControl.MapElements.Remove(mapIcon);
+        //        CitiesMapControl.MapElements.Remove(mapIcon);//error ?
         //    }
            
         //    mapIcon.Location = new Geopoint(location);

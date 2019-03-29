@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CityMapUWP.Services.Api
 {
-    class AppApiService
+    public class AppApiService
     {
         private const string AppDataUrl = "https://api.myjson.com/bins/7ybe5";
 

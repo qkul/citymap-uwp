@@ -6,7 +6,7 @@ using Windows.Storage;
 
 namespace CityMapUWP.Infrastructure
 {
-    class LocalStorage
+    public class LocalStorage
     {
         private const string AppDataFileName = "appData.txt";
         private readonly StorageFolder _localStorage;
