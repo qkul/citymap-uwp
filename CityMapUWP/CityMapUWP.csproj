@@ -120,14 +120,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\INavigationManager.cs" />
-    <Compile Include="Infrastructure\LocalStorage.cs" />
-    <Compile Include="Resources\LocalizedResources.cs" />
-    <Compile Include="Resources\LocalizedResourcesConverter.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Resources\LocalizedResources.cs" />
+    <Compile Include="Resources\LocalizedResourcesConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Api\AppApiService.cs" />
     <Compile Include="Services\CitiesService.cs" />
+    <Compile Include="Infrastructure\LocalStorage.cs" />
     <Compile Include="Services\NetworkService.cs" />
     <Compile Include="UserControls\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
@@ -214,7 +214,9 @@
       <Version>12.0.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

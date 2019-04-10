@@ -18,6 +18,11 @@ namespace CityMapUWP.ViewModels
         private readonly INavigationService _navigationService;
         private CitiesService _citiesService;
         private NetworkService _networkService;
+        private IEnumerable<City> _cities;
+        private bool _isLoadingProgressRing;
+        private Visibility _citiesMapButton;
+        private Visibility _visibilityNoData;
+        private string _noDataTextBl;
 
         public CitiesViewModel(INavigationService navigationService)
         {
@@ -25,11 +30,7 @@ namespace CityMapUWP.ViewModels
             _citiesService = new CitiesService();
             _networkService = new NetworkService();
         }
-        private IEnumerable<City> _cities;
-        private bool _isLoadingProgressRing;
-        private Visibility _citiesMapButton;
-        private Visibility _visibilityNoData;
-        private string _noDataTextBl;
+
       
         public IEnumerable<City> Cities
         {
@@ -98,11 +99,19 @@ namespace CityMapUWP.ViewModels
             else ShowNoData();
 
         }
+
+        protected override async void OnActivate()
+        {
+            await InitializeAsync();
+            base.OnActivate();
+        }
         protected override async void OnViewLoaded(object view)
         {
             await InitializeAsync();
-            base.OnViewLoaded(view);
+            base.OnInitialize();
         }
+
+
         private void ShowNoData()
         {
             NoDataTextBl = _networkService.HasInternet() ? NoData : NoInternetConection;

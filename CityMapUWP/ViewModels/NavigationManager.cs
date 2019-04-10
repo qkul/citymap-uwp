@@ -37,20 +37,16 @@ namespace CityMapUWP.ViewModels
             shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
         }
 
-        public void NavigateToShellViewModel()
+        public void NavigateToShellViewCities()
         {
             SetBackButtonVisibility(shellNavigationService.CanGoBack);
             shellNavigationService.NavigateToViewModel<CitiesViewModel>();
         }
 
-        public void NavigateToFriends()
-        {
-            SetBackButtonVisibility(shellNavigationService.CanGoBack);
-            shellNavigationService.NavigateToViewModel<SettingViewModel>();
-        }
 
         public void NavigateToShellViewModel(Type viewModelType)
         {
+            SetBackButtonVisibility(shellNavigationService.CanGoBack);
             shellNavigationService.NavigateToViewModel(viewModelType);
         }
         private void SetBackButtonVisibility(bool value)

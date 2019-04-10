@@ -2,9 +2,6 @@
 using CityMapUWP.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
 namespace CityMapUWP.ViewModels
@@ -13,36 +10,36 @@ namespace CityMapUWP.ViewModels
     {
         private readonly INavigationManager _navigationManager;
 
-
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
             {"Language",  typeof(SettingViewModel)},
             {"Home", typeof(CitiesViewModel) }
         };
 
-
-
         public ShellViewModel(INavigationManager navigationManager)
         {
-
             _navigationManager = navigationManager;
         }
 
         public void InitializeShellNavigationService(Frame frame)
         {
             _navigationManager.InitializeShellNavigationService(new FrameAdapter(frame));
-
+            _navigationManager.NavigateToShellViewCities();
         }
 
         public void NavigateToClikedItemMenu(string value)
         {
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
-
         protected override void OnActivate()
         {
             base.OnActivate();
         }
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+        }
+
     }
 
 }

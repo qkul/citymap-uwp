@@ -10,8 +10,7 @@ namespace CityMapUWP.Infrastructure
     {
 
         void InitializeShellNavigationService(object navigationService);
-        void NavigateToShellViewModel();
-        void NavigateToFriends();
+        void NavigateToShellViewCities();
         void NavigateToShellViewModel(Type viewModelType);
         void GoBack();
     }

@@ -47,7 +47,7 @@ namespace CityMapUWP
             if (e.PreviousExecutionState == ApplicationExecutionState.Running)
                 return;
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
-            DisplayRootView<CitiesView>();
+            DisplayRootView <ShellView>();
         }
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
