@@ -35,10 +35,6 @@ namespace CityMapUWP.ViewModels
         {
             base.OnActivate();
         }
-        protected override void OnDeactivate(bool close)
-        {
-            base.OnDeactivate(close);
-        }
 
     }
 

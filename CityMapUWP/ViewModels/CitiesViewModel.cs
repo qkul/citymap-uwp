@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using CityMapUWP.Infrastructure;
 using CityMapUWP.Models;
 using CityMapUWP.Services;
 using System;
@@ -15,7 +16,8 @@ namespace CityMapUWP.ViewModels
         private const string NoInternetConection = "No internet conection";
         private const string NoData = "No Data";
 
-        private readonly INavigationService _navigationService;
+        //   private readonly INavigationService _navigationService;
+        private readonly INavigationManager _navigationManager;
         private CitiesService _citiesService;
         private NetworkService _networkService;
         private IEnumerable<City> _cities;
@@ -24,11 +26,13 @@ namespace CityMapUWP.ViewModels
         private Visibility _visibilityNoData;
         private string _noDataTextBl;
 
-        public CitiesViewModel(INavigationService navigationService)
+        public CitiesViewModel(INavigationManager navigationManager)
         {
-            _navigationService = navigationService;
+            //_navigationService = navigationService;
+            _navigationManager = navigationManager;
             _citiesService = new CitiesService();
             _networkService = new NetworkService();
+
         }
 
       
@@ -105,12 +109,6 @@ namespace CityMapUWP.ViewModels
             await InitializeAsync();
             base.OnActivate();
         }
-        protected override async void OnViewLoaded(object view)
-        {
-            await InitializeAsync();
-            base.OnInitialize();
-        }
-
 
         private void ShowNoData()
         {
@@ -119,11 +117,13 @@ namespace CityMapUWP.ViewModels
         }
         public void NavigateToCityDetails(City city)
         {
-            _navigationService.NavigateToViewModel<CityDetailsViewModel>(city);
+            // _navigationManager.NavigateToViewModel<CityDetailsViewModel>(city);
+            _navigationManager.NavigateToDetails(city);
         }
         public void NavigateToCitiesMap(IEnumerable<City> cities)
         {
-            _navigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
+            //_navigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
+            _navigationManager.NavigateToMap(cities);
         }
     }
 }

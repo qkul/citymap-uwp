@@ -1,11 +1,10 @@
 ﻿using Caliburn.Micro;
 using CityMapUWP.Infrastructure;
+using CityMapUWP.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Core;
+
 
 namespace CityMapUWP.ViewModels
 {
@@ -42,13 +41,24 @@ namespace CityMapUWP.ViewModels
             SetBackButtonVisibility(shellNavigationService.CanGoBack);
             shellNavigationService.NavigateToViewModel<CitiesViewModel>();
         }
-
-
+      
         public void NavigateToShellViewModel(Type viewModelType)
         {
             SetBackButtonVisibility(shellNavigationService.CanGoBack);
             shellNavigationService.NavigateToViewModel(viewModelType);
         }
+
+        public void NavigateToDetails(City city)
+        {
+            shellNavigationService.NavigateToViewModel<CityDetailsViewModel>(city);
+        }
+
+        public void NavigateToMap(IEnumerable<City> cities)
+        {
+            shellNavigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
+        }
+
+
         private void SetBackButtonVisibility(bool value)
         {
                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CityMapUWP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,9 @@ namespace CityMapUWP.Infrastructure
         void NavigateToShellViewCities();
         void NavigateToShellViewModel(Type viewModelType);
         void GoBack();
+        void NavigateToDetails(City city);
+        void NavigateToMap(IEnumerable<City> cities);
+
+
     }
 }
