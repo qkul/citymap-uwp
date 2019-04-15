@@ -7,7 +7,7 @@ using Windows.Networking.Connectivity;
 
 namespace CityMapUWP.Services
 {
-    class NetworkService
+    public sealed class  NetworkService
     {
         public bool HasInternet()
         {

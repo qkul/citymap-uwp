@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CityMapUWP.Models
 {
     [DataContract()]
-    public class City
+    public sealed class City
     {
         [JsonProperty]
         [DataMember(Name = "id")]

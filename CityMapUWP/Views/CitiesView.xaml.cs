@@ -1,4 +1,6 @@
-﻿using CityMapUWP.Services;
+﻿using CityMapUWP.Models;
+using CityMapUWP.Services;
+using CityMapUWP.ViewModels;
 using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -10,47 +12,22 @@ namespace CityMapUWP.Views
 {
     public sealed partial class CitiesView : Page
     {
-        private const string NoInternetConection = "No internet conection";
-        private const string NoData = "No Data";
+        public CitiesViewModel ViewModel { get; set; }
 
-        private readonly CitiesService _citiesService;
-        private readonly NetworkService _networkService;
         public CitiesView()
         {
             this.InitializeComponent();
-            _citiesService = new CitiesService();
-            _networkService = new NetworkService();
+            DataContextChanged += (s, e) => { ViewModel = DataContext as CitiesViewModel; };
         }
-
-        public async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void OnClickCitiesListClick(object sender, ItemClickEventArgs e)
         {
-            await InitializeAsync();
+            ViewModel.NavigateToCityDetails(e.ClickedItem as City);
         }
-
-        private async Task InitializeAsync()
+        private void OnClickCitiesMap(object sender, RoutedEventArgs e)
         {
-            LoadingProgressRing.IsActive = true;
-            var cities = await _citiesService.LoadCitiesAsync();
-            LoadingProgressRing.IsActive = false;
-
-            if (cities != null)
-            {
-                CitiesGridView.ItemsSource = cities;
-                CitiesMapButton.Visibility = Visibility.Visible;
-            }
-            else ShowNoData();
-
+            ViewModel.NavigateToCitiesMap(ViewModel.Cities);
         }
-
-        private void ShowNoData()
-        {
-            NoDataTextBlock.Text = _networkService.HasInternet() ? NoData : NoInternetConection;
-            NoDataTextBlock.Visibility = Visibility.Visible;
-        }
-
-        private void CitiesGridView_ItemClick(object sender, ItemClickEventArgs itemClickEvent) => Frame.Navigate(typeof(CityDetailsView), itemClickEvent.ClickedItem);
-
-        private void CitiesMapButton_Tapped(object sender, TappedRoutedEventArgs e) => Frame.Navigate(typeof(CitiesMapView), CitiesGridView.ItemsSource);
+      
     }
 }
  
