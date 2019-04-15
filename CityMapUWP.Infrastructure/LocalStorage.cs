@@ -33,7 +33,6 @@ namespace CityMapUWP.Infrastructure
             }
             catch (Exception)
             {
-
                 return new AppData();
             }
         }

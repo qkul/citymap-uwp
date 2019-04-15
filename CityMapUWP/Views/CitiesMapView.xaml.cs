@@ -2,13 +2,9 @@
 using CityMapUWP.ViewModels;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
-using Windows.System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-
 
 namespace CityMapUWP.Views
 {
@@ -23,7 +19,6 @@ namespace CityMapUWP.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-       
             var cities = e.Parameter as IEnumerable<City>;
 
             if (cities != null)

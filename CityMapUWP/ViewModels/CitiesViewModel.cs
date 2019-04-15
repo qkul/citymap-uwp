@@ -2,10 +2,7 @@
 using CityMapUWP.Infrastructure;
 using CityMapUWP.Models;
 using CityMapUWP.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 

@@ -18,10 +18,7 @@
             </NavigationViewItem>
 
             <NavigationViewItem x:Uid="LanguageNavItem" Icon="Caption" Content="Language" Tag="language"/>
-
-
         </NavigationView.MenuItems>
-
 
         <Frame x:Name="ContentFrame" Margin="0"
                Loaded="OnShellFrameLoaded"
@@ -33,6 +30,5 @@
                 </TransitionCollection>
             </Frame.ContentTransitions>
         </Frame>
-
     </NavigationView>
 </Page>

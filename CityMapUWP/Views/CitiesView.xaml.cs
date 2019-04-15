@@ -1,12 +1,7 @@
 ﻿using CityMapUWP.Models;
-using CityMapUWP.Services;
 using CityMapUWP.ViewModels;
-using System.Threading.Tasks;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-
 
 namespace CityMapUWP.Views
 {
@@ -27,7 +22,6 @@ namespace CityMapUWP.Views
         {
             ViewModel.NavigateToCitiesMap(ViewModel.Cities);
         }
-      
     }
 }
  

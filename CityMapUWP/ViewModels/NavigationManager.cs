@@ -58,7 +58,6 @@ namespace CityMapUWP.ViewModels
             shellNavigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
         }
 
-
         private void SetBackButtonVisibility(bool value)
         {
                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =

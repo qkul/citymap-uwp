@@ -19,15 +19,11 @@
                                     VerticalAlignment="Bottom"
                                     Background="{ThemeResource SystemBaseLowColor}"
                                     Padding="15">
-                    <!--<TextBlock Text="{Binding Name}"-->
-                    <!--<TextBlock Text="{x:Bind ViewModel.CityModel.Name, Mode=OneTime}"-->
                     <TextBlock Text="{Binding Name}"   
                                        HorizontalAlignment="Center"
                                        FontFamily="Verdana"
                                        VerticalAlignment="Center"
-                                   
                                        Foreground="White"/>
-
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -35,17 +31,18 @@
         <DataTemplate x:Key="KeyNarrowTemplate">
 
             <Grid Height="130" >
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-
+                
                 <Image
                         Grid.Column="0"
                         Width="200"
                         Height="200"
                         Source="{Binding ImageUrl}" />
-
+                
                 <TextBlock
                         Grid.Column="1"
                         Margin="0,0,0,0"

@@ -35,8 +35,6 @@ namespace CityMapUWP.ViewModels
         {
             base.OnActivate();
         }
-
     }
-
 }
 
