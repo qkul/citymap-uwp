@@ -10,52 +10,54 @@ namespace CityMapUWP.ViewModels
 {
     public class NavigationManager : INavigationManager
     {
-        public INavigationService windowNavigationService;
-        public INavigationService shellNavigationService;
+        #region Field and Constructor
+        private readonly INavigationService _windowNavigationService;
+        private INavigationService _shellNavigationService;
         public event EventHandler OnShellNavigationManagerNavigated;
         public NavigationManager(INavigationService navigationService)
         {
-            windowNavigationService = navigationService;        
+            _windowNavigationService = navigationService;        
         }
+        #endregion
 
-        
+        #region Methods
         public void InitializeShellNavigationService(INavigationService navigationService)
         {
-            shellNavigationService = navigationService;
+            _shellNavigationService = navigationService;
         }
         private void OnShellNavigationServiceNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
            
-            SetBackButtonVisibility(shellNavigationService.CanGoBack);
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
             OnShellNavigationManagerNavigated?.Invoke(this, null);
         }
 
         public void InitializeShellNavigationService(object navigationService)
         {
-            shellNavigationService = (INavigationService)navigationService;
-            shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
+            _shellNavigationService = (INavigationService)navigationService;
+            _shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
         }
 
         public void NavigateToShellViewCities()
         {
-            SetBackButtonVisibility(shellNavigationService.CanGoBack);
-            shellNavigationService.NavigateToViewModel<CitiesViewModel>();
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+            _shellNavigationService.NavigateToViewModel<CitiesViewModel>();
         }
       
         public void NavigateToShellViewModel(Type viewModelType)
         {
-            SetBackButtonVisibility(shellNavigationService.CanGoBack);
-            shellNavigationService.NavigateToViewModel(viewModelType);
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+            _shellNavigationService.NavigateToViewModel(viewModelType);
         }
 
         public void NavigateToDetails(City city)
         {
-            shellNavigationService.NavigateToViewModel<CityDetailsViewModel>(city);
+            _shellNavigationService.NavigateToViewModel<CityDetailsViewModel>(city);
         }
 
         public void NavigateToMap(IEnumerable<City> cities)
         {
-            shellNavigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
+            _shellNavigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
         }
 
         private void SetBackButtonVisibility(bool value)
@@ -68,11 +70,11 @@ namespace CityMapUWP.ViewModels
 
         public void GoBack()
         {
-            if (shellNavigationService.CanGoBack)
+            if (_shellNavigationService.CanGoBack)
             {
-                shellNavigationService.GoBack();
+                _shellNavigationService.GoBack();
             }
         }
+        #endregion
     }
-
 }

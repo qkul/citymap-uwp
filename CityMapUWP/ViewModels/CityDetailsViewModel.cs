@@ -7,15 +7,13 @@ namespace CityMapUWP.ViewModels
 {
     public class CityDetailsViewModel : Screen
     {
-        private readonly INavigationService _navigationService;
-
-        public CityDetailsViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
+        #region Fields
+        private readonly INavigationService _navigationService;   
         private City _city;
         private BitmapImage _bitmapImageCity;
-        public City Parameter { get; set; }
+        #endregion
+
+        #region Properties
         public City City
         {
             get { return _city; }
@@ -35,7 +33,12 @@ namespace CityMapUWP.ViewModels
                 NotifyOfPropertyChange(nameof(ImageCity));
             }
         }
-
+        #endregion
+        public CityDetailsViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+        public City Parameter { get; set; }
         protected override void OnActivate()
         {
             base.OnActivate();

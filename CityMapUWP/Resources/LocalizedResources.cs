@@ -13,13 +13,7 @@ namespace CityMapUWP
         /// <summary>
         /// A list of the supported application languages.
         /// </summary>
-        public static IReadOnlyList<string> SupportedLanguages
-        {
-            get
-            {
-                return ApplicationLanguages.ManifestLanguages;
-            }
-        }
+        public static IReadOnlyList<string> SupportedLanguages => ApplicationLanguages.ManifestLanguages;
 
         /// <summary>
         /// Sets the language of the app.

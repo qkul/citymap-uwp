@@ -8,7 +8,7 @@ namespace CityMapUWP.Services.Api
 {
     public sealed class AppApiService
     {
-        private const string AppDataUrl = "https://api.myjson.com/bins/7ybe5";
+        public const string AppDataUrl = "https://api.myjson.com/bins/7ybe5";
 
         public async Task<AppData> FetchDataAsync()
         {
@@ -21,14 +21,15 @@ namespace CityMapUWP.Services.Api
                 var response = await httpClient.GetStringAsync(appDataUri);
                 result = JsonConvert.DeserializeObject<AppData>(response);
             }
-            catch (Exception)
+            catch
             {
-
-                throw;
+                //throw new Exception();
             }
-            httpClient.Dispose();
+            finally
+            {
+                httpClient.Dispose();
+            }
             return result;
         }
     }
-
 }

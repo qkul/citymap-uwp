@@ -10,6 +10,8 @@ namespace CityMapUWP.ViewModels
 {
     public class CitiesViewModel : Screen
     {
+        #region Fields
+
         private const string NoInternetConection = "No internet conection";
         private const string NoData = "No Data";
 
@@ -22,17 +24,9 @@ namespace CityMapUWP.ViewModels
         private Visibility _citiesMapButton;
         private Visibility _visibilityNoData;
         private string _noDataTextBl;
+        #endregion
 
-        public CitiesViewModel(INavigationManager navigationManager)
-        {
-            //_navigationService = navigationService;
-            _navigationManager = navigationManager;
-            _citiesService = new CitiesService();
-            _networkService = new NetworkService();
-
-        }
-
-      
+        #region Properties    
         public IEnumerable<City> Cities
         {
             get { return _cities; }
@@ -82,6 +76,32 @@ namespace CityMapUWP.ViewModels
                 NotifyOfPropertyChange(() => VisibilityNoData);
             }
         }
+        #endregion
+        public CitiesViewModel(INavigationManager navigationManager)
+        {
+            _navigationManager = navigationManager;
+            _citiesService = new CitiesService();
+            _networkService = new NetworkService();
+
+        }
+        
+        #region Methods
+        public void NavigateToCityDetails(City city)
+        {
+            // _navigationManager.NavigateToViewModel<CityDetailsViewModel>(city);
+            _navigationManager.NavigateToDetails(city);
+        }
+        public void NavigateToCitiesMap(IEnumerable<City> cities)
+        {
+            //_navigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
+            _navigationManager.NavigateToMap(cities);
+        }
+      
+        protected override async void OnActivate()
+        {
+            await InitializeAsync();
+            base.OnActivate();
+        }
 
         private async Task InitializeAsync()
         {
@@ -101,26 +121,11 @@ namespace CityMapUWP.ViewModels
 
         }
 
-        protected override async void OnActivate()
-        {
-            await InitializeAsync();
-            base.OnActivate();
-        }
-
         private void ShowNoData()
         {
             NoDataTextBl = _networkService.HasInternet() ? NoData : NoInternetConection;
             VisibilityNoData = Visibility.Visible;
         }
-        public void NavigateToCityDetails(City city)
-        {
-            // _navigationManager.NavigateToViewModel<CityDetailsViewModel>(city);
-            _navigationManager.NavigateToDetails(city);
-        }
-        public void NavigateToCitiesMap(IEnumerable<City> cities)
-        {
-            //_navigationService.NavigateToViewModel<CitiesMapViewModel>(cities);
-            _navigationManager.NavigateToMap(cities);
-        }
+        #endregion
     }
 }

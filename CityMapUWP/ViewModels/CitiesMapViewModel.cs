@@ -8,13 +8,8 @@ namespace CityMapUWP.ViewModels
     public class CitiesMapViewModel : Screen
     {
         private readonly INavigationService _navigationService;
-        public CitiesMapViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
         private IEnumerable<City> _cities;
         private MapControl _mapCities;
-        public IEnumerable<City> Parameter { get; set; }
 
         public IEnumerable<City> Cities
         {
@@ -35,7 +30,13 @@ namespace CityMapUWP.ViewModels
                 NotifyOfPropertyChange(nameof(CitiesMapControl));
             }
         }
-      
+
+        public CitiesMapViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        public IEnumerable<City> Parameter { get; set; }
         //protected override void OnActivate()
         //{
         //    base.OnActivate();
@@ -61,13 +62,13 @@ namespace CityMapUWP.ViewModels
         //    {
         //        CitiesMapControl.MapElements.Remove(mapIcon);//error ?
         //    }
-           
+
         //    mapIcon.Location = new Geopoint(location);
         //    mapIcon.Title = city.Name;
 
         //    CitiesMapControl.MapElements.Add(mapIcon);
         //    CitiesMapControl.Center = new Geopoint(location);
         //}
-     
+
     }
 }

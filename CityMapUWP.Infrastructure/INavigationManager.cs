@@ -7,10 +7,10 @@ namespace CityMapUWP.Infrastructure
     public interface INavigationManager
     {
         void InitializeShellNavigationService(object navigationService);
-        void NavigateToShellViewCities();
-        void NavigateToShellViewModel(Type viewModelType);
-        void GoBack();
-        void NavigateToDetails(City city);
         void NavigateToMap(IEnumerable<City> cities);
+        void NavigateToDetails(City city);
+        void NavigateToShellViewModel(Type viewModelType);      
+        void NavigateToShellViewCities();
+        void GoBack();             
     }
 }

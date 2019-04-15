@@ -31,10 +31,6 @@ namespace CityMapUWP.ViewModels
         {
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
-        protected override void OnActivate()
-        {
-            base.OnActivate();
-        }
     }
 }
 
