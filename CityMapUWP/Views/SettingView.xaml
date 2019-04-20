@@ -10,24 +10,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <local:LocalizedResourcesConverter x:Key="LocalizedResourcesConverter" />
-        
-        <Style TargetType="ComboBox" x:Key="ComboBoxLanguagesStyle">
-            <Setter Property="Grid.Row" Value="1"/>
-            <Setter Property="Height" Value="33"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Margin" Value="10,-50,10,0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-        
+
         <Style TargetType="TextBlock" x:Key="SettingMessageStyle">
-            <Setter Property="Grid.Row" Value="1"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="Grid.RowSpan" Value="2"/>
             <Setter Property="Text" Value="Welcome to the settings, here you can change the interface language. My contacts: q_kul@mail.ru"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
-        
     </Page.Resources>
 
     <Grid Background="Azure">
@@ -35,19 +25,18 @@
             <RowDefinition Height="67"/>
             <RowDefinition Height="62*"/>
         </Grid.RowDefinitions>
-
         <userControl:NavigationControl  NavigationTitle="Setting"/>
-        <ComboBox x:Name="CbxLanguages"
-                  Style="{StaticResource ComboBoxLanguagesStyle}"            
-                  SelectionChanged="CbxLanguages_SelectionChanged"   >
+      
+        <ComboBox x:Name="CbxLanguages"                        
+                  SelectionChanged="CbxLanguages_SelectionChanged" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top"   >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Converter={StaticResource LocalizedResourcesConverter}}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock x:Name="TblMessage"
+        <TextBlock Grid.Row="1" x:Name="TblMessage"
                    x:Uid="Message"
-                   Style="{StaticResource SettingMessageStyle}"/>
+                   Style="{StaticResource SettingMessageStyle}" HorizontalAlignment="Stretch" Margin="10,45,10,10" VerticalAlignment="Stretch"/>
     </Grid>
 </Page>

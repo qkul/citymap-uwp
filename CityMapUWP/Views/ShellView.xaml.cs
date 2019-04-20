@@ -17,7 +17,16 @@ namespace CityMapUWP.Views
 
         private void OnMenuItemClick(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
+            if (args.IsSettingsInvoked)
+            {
+                ViewModel.Naviga();
+
+            }
+            else
+            {
+                ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
+            }
+           
         }
 
         private void OnShellFrameLoaded(object sender, RoutedEventArgs e)

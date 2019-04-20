@@ -29,7 +29,7 @@ namespace CityMapUWP.ViewModels
         #region Properties    
         public IEnumerable<City> Cities
         {
-            get { return _cities; }
+            get => _cities;
             set
             {
                 _cities = value;
@@ -39,7 +39,7 @@ namespace CityMapUWP.ViewModels
     
         public string NoDataTextBl
         {
-            get { return _noDataTextBl; }
+            get => _noDataTextBl;
             set
             {
                 _noDataTextBl = value;
@@ -49,7 +49,7 @@ namespace CityMapUWP.ViewModels
 
         public bool IsLoadingProgressRing
         {
-            get { return _isLoadingProgressRing; }
+            get => _isLoadingProgressRing;
             set
             {
                 _isLoadingProgressRing = value;
@@ -59,7 +59,7 @@ namespace CityMapUWP.ViewModels
        
         public Visibility VisibilityCitiesMapButton
         {
-            get { return _citiesMapButton; }
+            get => _citiesMapButton;
             set
             {
                 _citiesMapButton = value;
@@ -69,7 +69,7 @@ namespace CityMapUWP.ViewModels
       
         public Visibility VisibilityNoData
         {
-            get { return _visibilityNoData; }
+            get => _visibilityNoData;
             set
             {
                 _visibilityNoData = value;
@@ -108,7 +108,6 @@ namespace CityMapUWP.ViewModels
             VisibilityNoData = Visibility.Collapsed;
             VisibilityCitiesMapButton = Visibility.Collapsed;
             IsLoadingProgressRing = true;
-            // var cities = await _citiesService.LoadCitiesAsync();
             var cities = await new CitiesService().LoadCitiesAsync();
             IsLoadingProgressRing = false;
 
@@ -120,7 +119,6 @@ namespace CityMapUWP.ViewModels
             else ShowNoData();
 
         }
-
         private void ShowNoData()
         {
             NoDataTextBl = _networkService.HasInternet() ? NoData : NoInternetConection;

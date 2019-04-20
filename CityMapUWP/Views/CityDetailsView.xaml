@@ -48,6 +48,10 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <Image Source="/Assets/default.jpg"
+                       Stretch="UniformToFill"
+                       Width="383"
+                       Height="383"/>
                 <Image x:Name="CityImage"
                        Style="{StaticResource CityImageStyle}"
                        Source="{x:Bind ViewModel.ImageCity, Mode=OneWay}"/>

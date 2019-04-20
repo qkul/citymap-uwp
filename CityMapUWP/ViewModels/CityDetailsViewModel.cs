@@ -16,7 +16,7 @@ namespace CityMapUWP.ViewModels
         #region Properties
         public City City
         {
-            get { return _city; }
+            get => _city;
             set
             {
                 _city = value;
@@ -26,7 +26,7 @@ namespace CityMapUWP.ViewModels
        
         public BitmapImage ImageCity
         {
-            get { return _bitmapImageCity; }
+            get => _bitmapImageCity;
             set
             {
                 _bitmapImageCity = value;
@@ -44,7 +44,6 @@ namespace CityMapUWP.ViewModels
             base.OnActivate();
             City = Parameter;
             if (City != null) ImageCity = new BitmapImage(new Uri(City.ImageUrl));
-
         }       
     }
 }

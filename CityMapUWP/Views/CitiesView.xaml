@@ -13,6 +13,10 @@
         <DataTemplate x:Key="KeyWideTemplate">
             <Grid Height="320"
                           Width="240">
+                <!--<Image Source="https://paragonrelocation.files.wordpress.com/2010/01/paragonrelo_globe.jpg"
+                       Stretch="UniformToFill"/>-->
+                <Image Source="/Assets/default.jpg"
+                       Stretch="UniformToFill"/>
                 <Image Source="{Binding ImageUrl}"
                                Stretch="UniformToFill"/>
                 <StackPanel Height="50"
@@ -36,7 +40,10 @@
                     <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                
+                <Image Source="/Assets/default.jpg"
+                       Stretch="UniformToFill"
+                       Width="200"
+                       Height="200"/>
                 <Image
                         Grid.Column="0"
                         Width="200"

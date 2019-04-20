@@ -10,7 +10,7 @@ namespace CityMapUWP.ViewModels
     {
         private readonly INavigationManager _navigationManager;
 
-        private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
+        private readonly IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
             {"Language",  typeof(SettingViewModel)},
             {"Home", typeof(CitiesViewModel) }
@@ -27,8 +27,15 @@ namespace CityMapUWP.ViewModels
             _navigationManager.NavigateToShellViewCities();
         }
 
+        public void Naviga()
+        {
+            _navigationManager.NavigateSetting();
+
+        }
+
         public void NavigateToClikedItemMenu(string value)
         {
+           
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
     }

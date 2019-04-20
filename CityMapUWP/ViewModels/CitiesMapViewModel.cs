@@ -13,7 +13,7 @@ namespace CityMapUWP.ViewModels
 
         public IEnumerable<City> Cities
         {
-            get { return _cities; }
+            get => _cities;
             set
             {
                 _cities = value;
@@ -23,7 +23,7 @@ namespace CityMapUWP.ViewModels
 
         public MapControl CitiesMapControl
         {
-            get { return _mapCities; }
+            get => _mapCities;
             set
             {
                 _mapCities = value;

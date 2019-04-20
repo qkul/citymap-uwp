@@ -7,8 +7,8 @@ namespace CityMapUWP.UserControls
     {
         public string NavigationTitle
         {
-            get { return (string)GetValue(dependencyProperty); }
-            set { SetValue(dependencyProperty, value); }
+            get => (string)GetValue(dependencyProperty);
+            set => SetValue(dependencyProperty, value);
         }
 
         public static readonly DependencyProperty dependencyProperty =
