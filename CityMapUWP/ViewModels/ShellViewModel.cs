@@ -27,7 +27,7 @@ namespace CityMapUWP.ViewModels
             _navigationManager.NavigateToShellViewCities();
         }
 
-        public void Naviga()
+        public void NavigateToSetting()
         {
             _navigationManager.NavigateSetting();
 

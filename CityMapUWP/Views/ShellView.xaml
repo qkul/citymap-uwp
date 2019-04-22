@@ -12,22 +12,14 @@
                     IsBackButtonVisible="Collapsed"           
                     CompactModeThresholdWidth="0" 
                     ExpandedModeThresholdWidth="10000"
-                    ItemInvoked="OnMenuItemClick"
-                  
-                     >
+                    ItemInvoked="OnMenuItemClick">
         <NavigationView.MenuItems >
             <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home" Margin="0,9,0,0" >
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE10F;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-
-            <NavigationViewItem x:Uid="LanguageNavItem" Grid.Row="5" Icon="Caption" Content="Language" Tag="language" />
         </NavigationView.MenuItems>
-        
-        <NavigationView.PaneFooter>
-            <NavigationViewItem x:Uid="LanguageNavItem" Content="Language" Tag="language"/>
-        </NavigationView.PaneFooter>
 
         <Frame x:Name="ContentFrame" Margin="0"
                Loaded="OnShellFrameLoaded"
@@ -39,25 +31,6 @@
                 </TransitionCollection>
             </Frame.ContentTransitions>
         </Frame>
-    
-    </NavigationView>
 
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger
-                        MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}"/>
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <!-- Remove the next 3 lines for left-only navigation. -->
-                    <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
-                    <Setter Target="NavViewSearchBox.Width" Value="200"/>
-                    <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
-                    <!-- Leave the next line for left-only navigation. -->
-                    <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
+    </NavigationView>
 </Page>

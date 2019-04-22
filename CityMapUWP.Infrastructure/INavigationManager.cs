@@ -11,7 +11,7 @@ namespace CityMapUWP.Infrastructure
         void NavigateToDetails(City city);
         void NavigateToShellViewModel(Type viewModelType);      
         void NavigateToShellViewCities();
-      void NavigateSetting();
+        void NavigateSetting();
         void GoBack();             
     }
 }

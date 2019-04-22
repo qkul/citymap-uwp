@@ -19,14 +19,13 @@ namespace CityMapUWP.Views
         {
             if (args.IsSettingsInvoked)
             {
-                ViewModel.Naviga();
+                ViewModel.NavigateToSetting();
 
             }
             else
             {
                 ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
-            }
-           
+            }    
         }
 
         private void OnShellFrameLoaded(object sender, RoutedEventArgs e)
